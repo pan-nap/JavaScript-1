@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #ul1{
+            width: 660px;
+            position: relative;
+            margin: 10px auto;
+        }
+        #ul1 li{
+            width: 200px;
+            height: 150px;
+            float: left;
+            margin: 10px;
+        }
+        #ul1 li:hover{
+            box-shadow: 0 0 6px 0 rgba(0,0,0,0.85);
+            cursor: move;
+        }
+        #ul1 li.active{
+            border: 1px dashed red;
+        }
+    </style>
+    <script src="move.js"></script>
+    <script>
+        window.onload = function(){
+            var oUl = document.getElementById("ul1");
+            var aLi = oUl.getElementsByTagName("li");
+            var aImg = oUl.getElementsByTagName("img");
+            var pos = [];
+            var obj = {};
+            var a = 0;
+            var b = 0;
+            for(var i = 0 ; i<aLi.length ; i++) {
+                //将li元素的可拖动设置为ture，img的默认可拖动设置为false
+                aLi[i].setAttribute("draggable", "true");
+                aImg[i].setAttribute("draggable", "false");
+
+                var left = aLi[i].offsetLeft;
+                var top = aLi[i].offsetTop;
+                pos[i] = {left: left, top: top};
+                aLi[i].style.left = left + "px";
+                aLi[i].style.top = top + "px";
+                aLi[i].index = i;
+            }
+            for(var i = 0 ; i<aLi.length ; i++){
+                aLi[i].style.position = "absolute";
+                aLi[i].style.margin = "0px";
+            }
+//            console.log(pos);
+            for(var i = 0 ; i<aLi.length ; i++){
+                //开始拖动存储拖动目标的位置信息
+                aLi[i].ondragstart = function(e){
+//                    e.dataTransfer.setDragImage(this.children,0,0)
+                    console.log(this.children)
+                    obj = this;
+                    a = this.index;
+                }
+                aLi[i].ondragenter = function(){
+                    if(obj!=this) {
+                        this.className = "active";
+                    }
+                }
+                aLi[i].ondragleave = function(){
+                    this.className = "";
+                }
+                aLi[i].ondragover = function(){
+                    return false;
+                }
+                aLi[i].ondrop = function(e){
+                    this.className = "";
+                    b = this.index;
+                    startMove(this,{left:pos[a].left,top:pos[a].top});
+                    startMove(obj,{left:pos[b].left,top:pos[b].top});
+                    this.index = a;
+                    obj.index = b;
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <ul id="ul1">
+        <li><img src="images/1.jpg" alt=""/></li>
+        <li><img src="images/2.jpg" alt=""/></li>
+        <li><img src="images/3.jpg" alt=""/></li>
+        <li><img src="images/4.jpg" alt=""/></li>
+        <li><img src="images/5.jpg" alt=""/></li>
+        <li><img src="images/6.jpg" alt=""/></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+				#acc {
+					width: 640px;
+					height: 140px;
+					
+					margin: 0 auto;
+				}
+				#acc ul  {
+					border-left:1px solid #ddd ;
+					height: 140px;
+					position: relative;
+				}
+				#acc ul li {
+					width:50px;
+					height: 138px;
+					border: 1px solid #ddd;
+					float: left;
+					list-style: none;
+					border-left: 0;
+					position: relative;
+					overflow: hidden;
+				}
+				#acc ul li.active {
+					width: 434px;
+					
+				}
+				#acc ul li h3 {
+					font-size: 14px;
+					color: #000;
+					font-weight:100;
+					width: 14px;
+					height: 98px;
+					padding: 40px 18px 0;
+					
+				}
+				#acc ul li h3.hover {
+					background: #f42760;
+					color: #fff;
+				}
+				#acc ul li  div {
+					width: 383px;
+					height: 138px;
+					background: blue;
+					position: absolute;
+					top: 0;
+					left: 50px;
+					border-left:1px solid #ddd ;
+					z-index: 0;
+				}
+				#acc ul li.last {
+					position: absolute;
+					top: 0;
+					right: 0;
+				}
+		</style>
+	</head>
+
+	<body>
+		<div id="acc">
+
+			<ul>
+				<li class="active">
+					<h3 class="hover">白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li>
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+				<li class="last">
+					<h3>白玫瑰</h3>
+					<div></div>
+				</li>
+			</ul>
+
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+		
+			$(function(){
+				$("#acc ul li").mouseover(function(){
+					$(this).stop().animate({"width":"434px"},300).siblings("li").stop().animate({"width":"50px"},300);
+					$(this).find("h3").html("红玫瑰").addClass("hover").parent().siblings("li").find("h3").html("白玫瑰").removeClass("hover")
+				})
+			})
+		
+		</script>
+		
+	</body>
+
+</html>

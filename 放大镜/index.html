@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+    	*{
+    		margin: 0;
+    		padding: 0;
+    		list-style: none;
+    	}
+    	body{
+    		background: black
+    	}
+		.mid{
+			width: 310px;
+			height: 310px;
+			position: relative;
+			border: 1px solid #ccc;
+			margin: 20px auto;
+			margin-left: 500px;
+			line-height: 310px;
+			text-align: center;
+			font-size: 0;
+			float: left;
+		}
+		.mid img{
+			vertical-align: middle;
+		}
+		.small{
+			width: 310px;
+			margin: 20px auto;
+		}
+		.small ul li{
+			float: left;
+			width: 40px;
+			height: 40px;
+			border: 1px solid #ccc;
+			margin-right: 10px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 0;
+			cursor: pointer;
+		}
+		.small ul li img{
+			vertical-align: middle;
+		}
+		.big{
+			width: 310px;
+			height: 310px;
+			margin: 20px ;
+			float: left;
+			overflow: hidden;
+			position: relative;
+		}
+		.big img{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.mask{
+			width: 128px;
+			height: 128px;
+			background: url(image/images1/mask.png) repeat;
+			position: absolute;
+			top: 45px;
+			left: 45px;
+			cursor: move;
+			display: none;
+		}
+    </style>
+    <script src="jquery-1.12.3.min.js"></script>
+    <script>
+    	$(function(){
+    		//小图点击切换中图
+    		$(".small ul li").click(function(){
+    			$(this).css({borderColor: 'red'}).siblings().css({borderColor:'#ccc'});
+    			var index = $(this).index(".small ul li");
+    			$(".mid img").eq(index).show().siblings().hide();
+    		})
+    		//鼠标移入中图
+    		$(".mid div img").mouseenter(function() {
+    			//遮罩层显示，大图显示
+    			$(".mask").show();
+    			var index = $(this).index(".mid div img")
+    			$(".big img").eq(index).show().siblings().hide();
+    			//鼠标移动，遮罩层和大图位置随着移动	
+    			$("html").mousemove(function(event) {
+    				var e = event||window.event;
+    				//遮罩层宽度的一半
+    				var a = $(".mask").width() / 2;	
+    				//中图外框left，top值		
+    				var b = $(".mid div:last").offset().left;
+    				var c = $(".mid div:last").offset().top;
+    				//鼠标的移动范围，可视为当前显示图片的尺寸减去遮罩层相应尺寸的一半
+    				var maxLeft = $(".mid div img:visible").offset().left + $(".mid div img:visible").width() - a;
+    				var minLeft = $(".mid div img:visible").offset().left + a;
+    				var maxTop = $(".mid div img:visible").offset().top + $(".mid div img:visible").height() - a;
+    				var minTop = $(".mid div img:visible").offset().top + a;
+    				//当前显示大图的可显示尺寸
+    				var w = -( $(".big img:visible").width() - $(".big").width() );
+    				var h = -( $(".big img:visible").height() - $(".big").height() );
+    				//遮罩层位置与大图显示位置相对应的斜率
+    				var k1 = w / ((maxLeft - a - b) - (minLeft - a - b)) ;
+                    var z1 = -k1*(minLeft -a - b);
+    				var k2 = h / ((maxTop - a - c) - (minTop - a - c));
+                    var z2 = -k2*(minTop - a - c);
+    				//设置遮罩层随鼠标移动
+    				$(".mask").css({
+						left: e.clientX - a - b + "px",					
+						top:  e.clientY - a - c + "px"
+					});
+					//设置大图显示位置随遮罩层位置移动
+					$(".big img:visible").css({
+						left: k1*(e.clientX - a - b) + z1 + "px",			
+						top: k2*( e.clientY - a - c) + z2 + "px"				
+					});
+					//设置遮罩层随鼠标移动的边界和大图显示的边界
+    				if (e.clientX<=minLeft) {
+    					$(".mask").css({left: minLeft - a - b + "px"})
+    					$(".big img:visible").css({left:"0px"})									
+    				}
+    				if(e.clientX>=maxLeft){
+    					$(".mask").css({left: maxLeft - a - b + "px"});
+    					$(".big img:visible").css({left: w + "px"})
+    				}
+    				if(e.clientY<=minTop){
+    					$(".mask").css({top:minTop - a - c + "px"});
+    					$(".big img:visible").css({top:"0px"})
+    				}
+    				if(e.clientY>=maxTop){
+    					$(".mask").css({top:maxTop - a - c + "px"});
+    					$(".big img:visible").css({top:h + "px"})
+    				}
+    				//设置移出图片范围时，遮罩层消失，大图消失
+    				if (e.clientX>maxLeft+a||e.clientX<minLeft-a||e.clientY>maxTop+a||e.clientY<minTop-a) {
+    					$(".mask").hide();
+    					$(".big img").hide();	
+    				};		
+                    
+    			});	
+    		});
+			
+    	})
+    </script>
+    <body>
+    	<div class="mid">
+    		<div class="mask"></div>
+    		<div>
+    			<img src="image/images1/01_mid.jpg" height="252" width="310" alt="">
+    			<img style="display:none" src="image/images1/02_mid.jpg" height="310" width="207" alt="">
+    			<img style="display:none" src="image/images1/03_mid.jpg" height="207" width="310" alt="">
+    			<img style="display:none" src="image/images1/04_mid.jpg" height="310" width="310" alt="">
+    		</div>
+    	</div>
+    	<div class="big">
+    		<img style="display:none" src="image/images1/01.jpg" height="610" width="750" alt="">
+    		<img style="display:none" src="image/images1/02.jpg" height="750" width="500" alt="">
+    		<img style="display:none" src="image/images1/03.jpg" height="500" width="750" alt="">
+    		<img style="display:none" src="image/images1/04.jpg" height="750" width="750" alt="">
+    	</div>
+    	<div style="clear:both"></div>
+    	<div class="small">
+    		<ul>
+    			<li><img src="image/images1/01_small.jpg" height="33" width="40" alt=""></li>
+    			<li><img src="image/images1/02_small.jpg" height="40" width="27" alt=""></li>
+    			<li><img src="image/images1/03_small.jpg" height="27" width="40" alt=""></li>
+    			<li><img src="image/images1/04_small.jpg" height="40" width="40" alt=""></li>
+    		</ul>
+    	</div>
+
+    </body>
+</html>

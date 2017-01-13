@@ -1,0 +1,26 @@
+/*
+* @Author: dellpc
+* @Date:   2016-10-30 16:53:23
+* @Last Modified by:   dellpc
+* @Last Modified time: 2016-11-07 20:19:44
+*/
+.clock{
+	background: url(images/bg.png) no-repeat 0 0;
+	width: 520px;
+	height: 520px;
+	margin:20px auto; 
+	box-sizing: border-box;
+	padding: 60px;
+}
+#clock_title,#year,#time{
+	text-align: center;
+	line-height: 0px;
+}
+#clock_title{
+	height: 45px;
+}
+.number{
+	position: relative;
+	width: 25px;
+	height: 37px;
+}

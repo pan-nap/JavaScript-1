@@ -1,0 +1,48 @@
+body{ 
+	margin:0;
+	padding:0;
+	color: #fff;
+	font-family: 'Josefin Slab', Arial, sans-serif;
+	font-size: 13px;
+	background: black;
+}
+ul {
+	list-style:none;
+}
+a{
+	
+	text-decoration: none;
+}
+.content{
+	position:relative;
+    width:580px;
+    margin: 0 auto;
+}
+.bmenu{
+    padding: 0px;
+    margin: 0 0 10px 0;
+    position: relative;
+}
+.bmenu li{
+    font-size: 50px;
+    display: block;
+}
+.bmenu li a{
+	color: transparent;
+	display: block;
+/*	text-transform: uppercase;					/* 将字母全部转化为大写 */
+ 						/* 将字母全部转化为小写 */ 
+	text-shadow: 0px 0px 5px #fff;
+	letter-spacing: 1px;
+
+	transition: all 0.3s ease-in-out;
+}
+.bmenu:hover li a{
+	text-shadow: 0px 0px 5px #0d1a3a;
+	text-transform: lowercase;
+}
+.bmenu li a:hover{
+	color: #fff;
+	text-shadow: 0px 0px 1px #fff;
+	padding-left: 10px;
+}

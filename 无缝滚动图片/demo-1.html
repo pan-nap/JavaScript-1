@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        	body{
+        		overflow: hidden;
+        	}
+        	#carousel{
+        		overflow: hidden;
+        		position: relative;
+        		font-size: 0;
+        	}
+			#carousel div{
+				float: left;
+			}
+			/* #carousel div a img{
+				width: 100%;
+			} */
+        </style>
+        <script>
+        	window.onload = function(){
+        		var carousel  = document.getElementById('carousel');
+        		var imgs = carousel.getElementsByTagName('img');
+        		// console.log(getComputedStyle(imgs[0],false).width)
+        		carousel.style.width = parseInt(getComputedStyle(imgs[0],false).width) * imgs.length + "px";
+        	}
+        </script>
+    </head>
+    <body>
+    	<div id="carousel">
+    		<div><a href="#"><img src="images/1.jpg" height="1080" width="1780" alt=""></a></div>
+    		<div><a href="#"><img src="images/2.jpg" height="1080" width="1780" alt=""></a></div>
+    		<div><a href="#"><img src="images/3.jpg" height="1080" width="1780" alt=""></a></div>
+    		<div><a href="#"><img src="images/4.jpg" height="1080" width="1780" alt=""></a></div>
+    	</div>
+    </body>
+</html>

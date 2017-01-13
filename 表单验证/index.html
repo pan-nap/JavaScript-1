@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+    body {
+        font: 12px/25px 宋体;
+    }
+    
+    h2,form, input,p,ul,li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    a {
+        color: #0578e5;
+    }
+    
+    .red {
+        color: #f00;
+    }
+    
+    .clear {
+        clear: both;
+    }
+    
+    .wrap {
+        width: 962px;
+        margin: 0 auto;
+    }
+    
+    #header {}
+    
+    #main .top {
+        background: url(images/top.gif);
+        height: 53px;
+    }
+    
+    #main .content {
+        border-left: 1px solid #81a1b8;
+        border-right: 1px solid #81a1b8;
+        border-bottom: 1px solid #81a1b8;
+        padding: 40px 50px;
+        font-size: 14px;
+    }
+    
+    #main .content h2 {
+        position: relative;
+        clear: both;
+        font-size: 14px;
+        line-height: 30px;
+        height: 30px;
+        color: #047bbf;
+        border-bottom: 1px solid #98b7cc;
+        background: #f8f9fd;
+        padding: 0 10px;
+    }
+    
+    #main .content h2 em {
+        position: absolute;
+        display: block;
+        background: url(images/arrow.gif);
+        width: 10px;
+        height: 5px;
+        left: 35px;
+        bottom: -5px;
+        overflow: hidden;
+    }
+    
+    #main .content h2 span {
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: normal;
+        color: #9a9997;
+    }
+    
+    #main .content ul {
+        list-style: none;
+        line-height: 28px;
+        padding: 10px 0;
+    }
+    
+    #main .content ul li {
+        margin: 20px 0;
+        clear: both;
+        border: 1px solid #fff;
+    }
+    
+    #main .content ul li .title {
+        float: left;
+        width: 230px;
+        text-align: right;
+    }
+    
+    #main .content ul li .inputer {
+        float: left;
+        padding-left: 5px;
+        width: 260px;
+    }
+    
+    #main .content ul li .inputer-foot {
+        font-size: 12px;
+    }
+    
+    #main .content ul li .message {
+        margin-left: 500px;
+        position: relative;
+    }
+    
+    #main .content ul li .inputer input {
+        vertical-align: middle;
+    }
+    
+    #main .content ul li .inputer .input-text {
+        width: 240px;
+        border: 1px solid #a1b4c5;
+        padding: 4px 6px;
+    }
+    
+    #main .content ul li .inputer #birthyear {
+        width: 65px;
+    }
+    
+    #main .content ul li .inputer #birthmonth,
+    #main .content ul li .inputer #birthday {
+        width: 35px;
+    }
+    
+    #main .content ul li .inputer .input-radio {
+        margin: 4px;
+    }
+    
+    #main .content ul li .inputer select {
+        width: 255px;
+    }
+    
+    #main .content ul li .inputer .input-button {
+        cursor: pointer;
+        background: url(images/button.gif);
+        width: 117px;
+        height: 42px;
+        border: none;
+    }
+    
+    #main .content ul li .popbox {
+        position: absolute;
+        width: 307px;
+        left: 25px;
+        top: 0px;
+    }
+    
+    #main .content ul li .popbox .ptop {
+        height: 4px;
+        background-position: -14px 0;
+        overflow: hidden;
+    }
+    
+    #main .content ul li .popbox .ptext {
+        padding: 2px 12px;
+        background-position: -324px 0;
+        color: #4a4849;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    #main .content ul li .popbox .pbottom {
+        height: 5px;
+        background-position: -14px -8px;
+        overflow: hidden;
+    }
+    
+    #main .content ul li .popbox .parrow {
+        position: absolute;
+        width: 11px;
+        height: 13px;
+        left: -8px;
+        top: 8px;
+        overflow: hidden;
+    }
+    
+    #main .content ul li .popbox em {
+        display: block;
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        left: -30px;
+        top: 5px;
+    }
+    
+    #main .content ul li .notice div {
+        background-image: url(images/msg_notice.gif);
+    }
+    
+    #main .content ul li .success em {
+        background-image: url(images/icon_success.gif);
+    }
+    
+    #main .content ul li .error div {
+        background-image: url(images/msg_error.gif);
+    }
+    
+    #main .content ul li .error em {
+        background-image: url(images/icon_error.gif);
+    }
+    </style>
+    <script src="jquery-1.12.3.min.js"></script>
+    <script>
+    $(function(){
+
+    	$("#userName").focus(function() {
+	    	$(this).parent().next().html('<div class="popbox notice"><div class="ptop"></div><div class="parrow"></div><div class="ptext">多少分了多少分局领导说附近的牌</div><div class="pbottom"></div></div>');
+    	});
+
+    	$("#userName").blur(function() {
+    		// $(this).parent().next().html('<div class="popbox success"><em></em></div>');
+    		$(this).parent().next().html('<div class="popbox error"><div class="ptop"></div><em></em><div class="parrow"></div><div class="ptext">sdfsdf</div><div class="pbottom"></div></div>')
+    	});
+
+
+    });
+    </script>
+</head>
+
+<body>
+    <div id="header" class="wrap"><img src="images/logo.gif" /></div>
+    <div id="main" class="wrap">
+        <div class="top"></div>
+        <div class="content">
+            <form method="post" action="" onsubmit="return CheckForm()">
+                <h2>创建您的账号<em></em></h2>
+                <ul>
+                    <li>
+                        <div class="title">
+                            用户名：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="userName" class="input-text input-error" type="text" name="userName" size="35" maxlength="18" />
+                        </div>
+                        <div class="message">
+                        	
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            密码：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="passWord" name="passWord" class="input-text" type="password" size="35" maxlength="16" />
+                        </div>
+                        <div class="message">
+                        	<!-- <div class="popbox success">
+                        		<em></em>
+                        	</div> -->
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            再次输入密码：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="rePassWord" name="rePassWord" class="input-text" type="password" size="35" maxlength="16" />
+                        </div>
+                        <div class="message">
+                        	<!-- <div class="popbox error">
+                        		<div class="ptop"></div>
+                        		<em></em>
+                        		<div class="parrow"></div>
+                        		<div class="ptext">sdfsdf</div>
+                        		<div class="pbottom"></div>
+                        	</div> -->
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+                <h2>安全信息设置<span>（以下信息非常重要，请慎重填写）</span><em></em></h2>
+                <ul>
+                    <li>
+                        <div class="title">
+                            密码保护问题：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <select id="questions" name="questions">
+                                <option value="">请选择密码提示问题</option>
+                                <option value="我的故乡在哪里？">我的故乡在哪里？</option>
+                                <option value="我家的猫咪叫什么名字？">我家的猫咪叫什么名字？</option>
+                            </select>
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            密码保护问题答案：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="answer" name="answer" class="input-text" type="text" size="35" maxlength="30" />
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            性别：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="male" class="input-radio" type="radio" name="sex" value="1" checked="checked" />
+                            <label for="male">男</label>
+                            <input id="female" class="input-radio" type="radio" name="sex" value="2" />
+                            <label for="female">女</label>
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            出生日期：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input class="input-text" type="text" id="birthyear" name="birthyear" size="4" maxlength="4" /> 年
+                            <input class="input-text" type="text" id="birthmonth" name="birthmonth" size="2" maxlength="2" /> 月
+                            <input class="input-text" type="text" id="birthday" name="birthday" size="2" maxlength="2" /> 日
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title">
+                            手机号：<span class="red">*</span>
+                        </div>
+                        <div class="inputer">
+                            <input id="mobile" name="mobile" class="input-text" type="text" size="35" maxlength="11" />
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+                <h2>服务条款<em></em></h2>
+                <ul>
+                    <li>
+                        <div class="title"></div>
+                        <div class="inputer inputer-foot">
+                            <input id="privacy" type="checkbox" />
+                            <label for="privacy">我已阅读并接受“<a href="#">服务条款</a>”</label>
+                        </div>
+                        <div class="message"></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="title"></div>
+                        <div class="inputer inputer-foot">
+                            <input class="input-button" type="submit" name="submit" value="" />
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

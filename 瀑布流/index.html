@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+			.container{
+				width: 100%;
+				margin: 20px auto;
+                height: auto;
+                position: relative;
+			}
+			.container div{
+				float: left;
+				width: 200px;
+				/* margin: 20px; */
+                box-shadow: 0 0 5px #000;
+				border-radius: 10px;
+				padding: 10px;
+				box-sizing: border-box;
+                background: #ccc;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                transition: all 1s ease-out;
+			}
+			.container img{
+				width: 100%;
+				border-radius: 10px;
+			}
+        </style>
+        <script>
+        	window.onload = function(){
+                function getStyle(obj,prop){
+                    if (obj.currentStyle) {
+                        return obj.currentStyle[prop]
+                    }else{
+                        return getComputedStyle(obj,false)[prop]
+                    };
+                }
+                function set(){
+                    var oContainer = document.getElementsByClassName("container")[0];
+
+                    var aDiv = oContainer.getElementsByTagName("div");
+                    var arr = [];
+                    var margin = 20;
+                    var oDivWidth = aDiv[0].offsetWidth;
+                    var height = 0;
+                    var n = parseInt(document.documentElement.clientWidth/(oDivWidth+2*margin));
+                    for(var i=0 ; i<aDiv.length ; i++){
+                        if (i<n) {
+                            aDiv[i].style.top = margin + "px";
+                            aDiv[i].style.left = i*oDivWidth + (2*i+1)*margin + "px";
+                            height = parseInt(getStyle(aDiv[i],"height")) + margin;
+                            oContainer.style.width = (oDivWidth+2*margin)*n +"px"
+                            arr.push(height); 
+                        }else{
+                            var minHeight = Math.min.apply(null,arr);
+                            var minKey = arr.indexOf(minHeight);
+                            aDiv[i].style.left = minKey*oDivWidth + (2*minKey+1)*margin + "px";
+                            aDiv[i].style.top = minHeight + margin + "px";
+                            height = parseInt(getStyle(aDiv[i],"height")) + margin
+                            arr[minKey] = minHeight + height;
+                        };
+                    }
+                }
+                set()
+                window.onresize = function(){
+                    set()
+                }
+        	}
+        </script>
+    </head>
+    <body>
+    	<div class="container">
+    		<div><img src="img/1.jpg"></div>
+    		<div><img src="img/2.jpg"></div>
+    		<div><img src="img/3.jpg"></div>
+    		<div><img src="img/4.jpeg"></div>
+    		<div><img src="img/5.jpeg"></div>
+    		<div><img src="img/6.jpeg"></div>
+    		<div><img src="img/7.jpeg"></div>
+    		<div><img src="img/8.jpeg"></div>
+    		<div><img src="img/9.jpeg"></div>
+    		<div><img src="img/10.jpg"></div>
+    		<div><img src="img/11.jpg"></div>
+            <div><img src="img/1.jpg"></div>
+            <div><img src="img/2.jpg"></div>
+            <div><img src="img/3.jpg"></div>
+            <div><img src="img/4.jpeg"></div>
+            <div><img src="img/5.jpeg"></div>
+            <div><img src="img/6.jpeg"></div>
+            <div><img src="img/7.jpeg"></div>
+            <div><img src="img/8.jpeg"></div>
+            <div><img src="img/9.jpeg"></div>
+            <div><img src="img/10.jpg"></div>
+            <div><img src="img/11.jpg"></div>
+            <div><img src="img/1.jpg"></div>
+            <div><img src="img/2.jpg"></div>
+            <div><img src="img/3.jpg"></div>
+            <div><img src="img/4.jpeg"></div>
+            <div><img src="img/5.jpeg"></div>
+            <div><img src="img/6.jpeg"></div>
+            <div><img src="img/7.jpeg"></div>
+            <div><img src="img/8.jpeg"></div>
+            <div><img src="img/9.jpeg"></div>
+            <div><img src="img/10.jpg"></div>
+            <div><img src="img/11.jpg"></div>
+    	</div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel=stylesheet type=text/css href="css/lrtk.css">
+		
+		<!--<script src="js/jquery.js"></script>-->
+		<!--<script src="js/lrtk.js"></script>-->
+		<script src="js/jquery-1.12.3.min.js"></script>
+		<script>
+			window.onload = function(){
+				$(document).ready(function(){
+					var h = 0;
+					$(".dym-dl").each(function(index, el) {
+						var html = $(el).html();
+						$(el).html(html+html);
+						var time = setInterval(function(){
+							h = $(el).children("div").first().outerHeight();
+							$(el).children("div").first().delay(index*2000).animate({
+								marginTop: -h - 12 + "px",
+							},1500,function(){
+								$(el).children("div").first().appendTo($(el)).css({
+									marginTop: '0px'
+								});
+							});
+						},8000)
+					});
+					$(".dym-dl").mouseover(function() {
+						$(this).children().stop()
+					});
+
+				})
+			}
+
+		</script>
+	</head>
+	<body>
+		<div id="content">
+			<div id="waterfall" class="waterfall">
+				<div class="dym-dl">
+					<div class="dym"><img src="images/01.jpg" /></div>
+					<div class="dym"><img src="images/02.jpg" /></div>
+					<div class="dym"><img src="images/03.jpg" /></div>
+					<div class="dym"><img src="images/04.jpg" /></div>
+					<div class="dym"><img src="images/17.jpg" /></div>
+				</div>
+				<div class="dym-dl">
+					<div class="dym"><img src="images/05.jpg" /></div>
+					<div class="dym"><img src="images/06.jpg" /></div>
+					<div class="dym"><img src="images/07.jpg" /></div>
+					<div class="dym"><img src="images/08.jpg" /></div>
+				</div>
+				<div class="dym-dl">
+					<div class="dym"><img src="images/09.jpg" /></div>
+					<div class="dym"><img src="images/10.jpg" /></div>
+					<div class="dym"><img src="images/11.jpg" /></div>
+					<div class="dym"><img src="images/12.jpg" /></div>
+				</div>
+				<div class="dym-dl">
+					<div class="dym"><img src="images/13.jpg" /></div>
+					<div class="dym"><img src="images/14.jpg" /></div>
+					<div class="dym"><img src="images/15.jpg" /></div>
+					<div class="dym"><img src="images/16.jpg" /></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

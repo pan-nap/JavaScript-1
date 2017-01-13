@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+* { padding: 0; margin: 0; }
+li { list-style: none; }
+body { background: #f6f9fc; }
+
+div { width: 660px; height: 254px; border: 1px solid #ccc; margin: 50px auto 0; overflow:hidden; }
+ul { width: 3300px; height: 254px; }
+ul li { width: 22px; height: 254px; float: left; position: relative; overflow:hidden; }
+.active { width: 550px; }
+ul span { width: 21px; height: 244px; padding-top: 10px; border-right: 1px solid #fff; position: absolute; top: 0; right: 0; color: #fff; font-size: 12px; text-align: center; cursor: pointer; }
+ul img { width: 550px; height: 254px; }
+.bg0 { background: #00FFCC; }
+.bg1 { background: #636363; }
+.bg2 { background: #3d7fbb; }
+.bg3 { background: #5ca716; }
+.bg4 { background: #f28b24; }
+.bg5 { background: #7c0070; }

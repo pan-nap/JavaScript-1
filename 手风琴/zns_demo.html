@@ -1,0 +1,49 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>手风琴</title>
+<link href="style/zns_style.css" rel="stylesheet" type="text/css" />
+<!-- <script src="js/zns_script.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://js.tongji.linezing.com/2880049/tongji.js"></script> -->
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+        $("li").mouseenter(function(event) {
+            $(this).stop().animate({width: "550px"}, 1000).siblings().stop().animate({width: "22px"}, 1000)
+        });
+    })
+</script>
+</head>
+<body>
+<div id="show1">
+    <ul>
+        <li class="active">
+            <span class="bg0">这是第一个</span>
+            <img src="images/1.jpg" />
+        </li>
+        <li>
+            <span class="bg1">这是第二个</span>
+            <img src="images/2.jpg" />
+        </li>
+        <li>
+            <span class="bg2">这是第三个</span>
+            <img src="images/3.png" />
+        </li>
+        <li>
+            <span class="bg3">这是第四个</span>
+            <img src="images/4.png" />
+        </li>
+        <li>
+            <span class="bg2">这是第五个</span>
+            <img src="images/2.jpg" />
+        </li>
+        <li>
+            <span class="bg3">这是第六个</span>
+            <img src="images/3.png" />
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

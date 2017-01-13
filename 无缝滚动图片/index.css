@@ -1,0 +1,73 @@
+/*
+* @Author: dellpc
+* @Date:   2016-10-29 19:24:10
+* @Last Modified by:   dellpc
+* @Last Modified time: 2016-10-30 11:46:09
+*/
+body{
+	margin:0px;
+	padding: 0px;
+	font-size: 16px;
+	line-height: 22px;
+	font-family: "微软雅黑"; 
+}
+ul li{
+	list-style: none; 
+}
+.control{
+	background: #eee;
+	padding: 20px 0;
+	text-align: center;
+}
+.roll{
+	width: 870px;
+	overflow: hidden;
+	margin:auto;
+	position: relative; 
+}
+.roll .btn_left{
+	width: 68px;
+	height: 68px;
+	display: block;
+	background: url(images/btn.jpg) no-repeat -68px -68px ;
+	position: absolute;
+	left: 0px;
+	top: 55px;
+}
+.roll .btn_left:hover{
+	background: url(images/btn.jpg) no-repeat -68px 0px ;
+}
+.roll .btn_right{
+	width: 68px;
+	height: 68px;
+	display: block;
+	background: url(images/btn.jpg) no-repeat 0px -68px ;
+	position: absolute;
+	right: 0px;
+	top: 55px;
+}
+.roll .btn_right:hover{
+	background: url(images/btn.jpg) no-repeat 0px 0px ;
+}
+.roll .wrap{
+	width: 728px;
+	margin:20px auto; 
+	height: 125px;
+	overflow: hidden;
+	position: relative;
+}
+.roll .wrap ul{
+	padding: 0px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.roll .wrap ul li{
+	float: left;
+	width: 182px;
+	height: 108px;
+	text-align: center;
+}
+.roll .wrap ul li:hover{
+	margin-top:2px ;
+}
