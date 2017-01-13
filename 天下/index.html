@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="jquery-1.12.3.min.js"></script>
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .container{
+            width: 1200px;
+            height: 483px;
+            margin: 200px auto 0;
+            -webkit-perspective: 1300px;
+        }
+        .container div{
+            width: 350px;
+            height: 483px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            z-index: -1;
+            opacity: 0;
+            margin-left: -175px;
+            transition-duration: 500ms;
+            transform: translate3d(0px, 0px, -1200px) rotateX(0deg) rotateY(0deg);
+        }
+        div.center{
+            z-index: 5;
+            opacity: 1;
+            transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg);
+
+        }
+        div.right_middle{
+            z-index: 4;
+            opacity: .8;
+            transform: translate3d(250px, 0px, -150px) rotateX(0deg) rotateY(-50deg)
+
+        }
+        div.right_back{
+            z-index: 3;
+            opacity: .6;
+            transform: translate3d(500px, 0px, -300px) rotateX(0deg) rotateY(-70deg)
+        }
+        div.left_middle{
+            z-index: 4;
+            opacity: .8;
+            transform: translate3d(-250px, 0px, -150px) rotateX(0deg) rotateY(50deg)
+        }
+        div.left_back{
+            z-index: 3;
+            opacity: .6;
+            transform: translate3d(-500px, 0px, -300px) rotateX(0deg) rotateY(70deg)
+        }
+        .nav{
+            width: 800px;
+            margin: 50px auto;
+        }
+        .nav li{
+            float: left;
+            margin: 20px;
+            background: #ccc;
+            padding: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+        li.on{
+            background: red;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            $(function () {
+                var i = 0;
+
+                function change(i) {
+                    $(".nav li").eq(i).addClass("on").siblings().removeClass();
+                    var len = $(".container div").length;
+                    var arr = jQuery.makeArray($(".container div"));
+                    var arr1 = arr.slice(i, len);
+                    var arr2 = arr.slice(0, i);
+                    arr = arr1.concat(arr2);
+                    for (var j = 0; j < len; j++) {
+                        $(arr[j]).removeClass()
+                    }
+                    for (var j = 0; j < len; j++) {
+                        if (j == 0) {
+                            $(arr[j]).addClass("center")
+                        } else if (j == 1) {
+                            $(arr[j]).addClass("right_middle")
+                        } else if (j == 2) {
+                            $(arr[j]).addClass("right_back")
+                        } else if (j == (len - 1)) {
+                            $(arr[j]).addClass("left_middle")
+                        } else if (j == (len - 2)) {
+                            $(arr[j]).addClass("left_back")
+                        }
+                    }
+                }
+
+                $(".nav li").click(function () {
+                    i = $(this).index(".nav li");
+                    change(i)
+                })
+                $(".container div").click(function () {
+                    i = $(this).index(".container div");
+                    change(i)
+                })
+            })
+        }
+ </script>
+</head>
+<body>
+    <div class="container">
+        <div class="center"><img src="images/tianji_0f613b9.png" alt=""></div>
+        <div class="right_middle"><img src="images/tianji_0f613b9.png" alt=""></div>
+        <div class="right_back"><img src="images/huanghuo_0709cc0.png" alt=""></div>
+        <div><img src="images/yunlu_d0b19bf.png" alt=""></div>
+        <div><img src="images/bingxin_7c89156.png" alt=""></div>
+        <div><img src="images/yijian_35214b3.png" alt=""></div>
+        <div><img src="images/taixu_fe0187a.png" alt=""></div>
+        <div><img src="images/wangliang_2a36e84.png" alt=""></div>
+        <div><img src="images/lingyu_e7aa634.png" alt=""></div>
+        <div><img src="images/youhuang_e655f09.png" alt=""></div>
+        <div><img src="images/longwu_d4e41dd.png" alt=""></div>
+        <div><img src="images/guimo_3545017.png" alt=""></div>
+        <div class="left_back"><img src="images/xiongdi_01535bb.png" alt=""></div>
+        <div class="left_middle"><img src="images/tianxia_4feae08.png" alt=""></div>
+    </div>
+    <ul class="nav">
+        <li class="on">天机·男</li>
+        <li>天机·女</li>
+        <li>荒火</li>
+        <li>云麓</li>
+        <li>冰心</li>
+        <li>弈剑</li>
+        <li>太虚</li>
+        <li>魍魉</li>
+        <li>翎羽</li>
+        <li>幽篁</li>
+        <li>龙巫</li>
+        <li>鬼墨</li>
+        <li>兄弟情</li>
+        <li>八年天下</li>
+    </ul>
+</body>
+</html>
