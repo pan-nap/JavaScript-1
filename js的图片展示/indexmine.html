@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background: #ececec;
+        }
+        #container{
+            width: 810px;
+            margin: 200px auto;
+            height: 347px;
+            position: relative;
+        }
+        #prev{
+            width: 150px;
+            height: 112px;
+            z-index: 5;
+            background: url("images/prev.png") no-repeat 0 0;
+            position: absolute;
+            left: 0px;
+            top: 50%;
+            margin-top: -56px;
+            cursor: pointer;
+            transition: all .5s linear;
+        }
+        #prev:hover{
+            background: url("images/prev_1.png") no-repeat 0 0;
+            transform: translateX(15px);
+        }
+        #prev #prev_text{
+            visibility: hidden;
+            background: url("images/prev_txt.png") no-repeat 0 0;
+            width: 106px;
+            height: 112px;
+            position: absolute;
+            left: 70px;
+            transition: all .5s linear;
+        }
+        #prev:hover #prev_text{
+            visibility: visible;
+            left: 40px;
+        }
+        #next{
+            width: 150px;
+            height: 112px;
+            z-index: 5;
+            background: url("images/next.png") no-repeat 80px 0;
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            margin-top: -56px;
+            cursor: pointer;
+            transition: all .5s linear;
+        }
+        #next:hover{
+            background: url("images/next_1.png") no-repeat 80px 0;
+            transform: translateX(-15px);
+        }
+        #next #next_text{
+            visibility: hidden;
+            background: url("images/next_txt.png") no-repeat 0 0;
+            width: 106px;
+            height: 112px;
+            position: absolute;
+            right: 70px;
+            transition: all .5s linear;
+
+        }
+        #next:hover #next_text{
+            visibility: visible;
+            right: 40px;
+        }
+        #container ul{
+            position: relative;
+            height: 347px;
+            width: 100%;
+        }
+        #container ul li{
+            position: absolute;
+            font-size: 0px;
+            transition: all .5s linear;
+        }
+        #container ul li img{
+            width: 100%;
+        }
+        .pic0{
+            border: 3px solid white;
+            left: 66px;
+            top: 0px;
+            width: 686px;
+            z-index: 3;
+            opacity: 1;
+        }
+        .pic1{
+            left: 370px;
+            top: 55px;
+            width: 475px;
+            opacity: .8;
+            z-index: 2;
+        }
+        .pic2{
+            left: 630px;
+            top: 110px;
+            width: 256px;
+            opacity: .6;
+            z-index: 1;
+        }
+        .pic3{
+            left: 630px;
+            top: -145px;
+            width: 256px;
+            opacity: 0;
+            z-index: 1;
+        }
+        .pic4{
+            left: 630px;
+
+            top: -145px;
+            width: 256px;
+            opacity: 0;
+            z-index: 1;
+        }
+        .pic5{
+            left: 0px;
+            top: -145px;
+            width: 100px;
+            opacity: 0;
+            z-index: 1;
+        }
+        .pic6{
+            left: -70px;
+            top: 110px;
+            width: 256px;
+            opacity: .6;
+            z-index: 1;
+        }
+        .pic7{
+            left: -30px;
+            top: 55px;
+            width: 475px;
+            opacity: .8;
+            z-index: 2;
+        }
+    </style>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script>
+        window.onload = function(){
+            $(function(){
+                var $arr = [];
+                for(var i = 0 ; i<$("li[class]").length ; i++) {
+                    $arr[i] = $("li[class]")[i].className
+                }
+                var l = $arr.length ;
+                var b_click;
+                $("#next").on("click",function(){
+                    b_click = true;
+                    change()
+
+                })
+                $("#prev").on("click",function(){
+
+                    b_click = false;
+                    change();
+                })
+                function change(){
+                    if(b_click){
+                        var $arr1 = $arr.slice(l-1,l);
+                        var $arr2 = $arr.slice(0,l-1);
+                        $arr = $arr1.concat($arr2);
+                    }else {
+                        var $arr1 = $arr.slice(0, 1);
+                        var $arr2 = $arr.slice(1, l);
+                        $arr = $arr2.concat($arr1);
+                    }
+                    $("li[class]").each(function(index,ele){
+                        $(ele).removeClass().addClass($arr[index])
+                    })
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="prev">
+            <span id="prev_text"></span>
+        </div>
+        <div id="next">
+            <span id="next_text"></span>
+        </div>
+        <ul>
+            <li class="pic0"><img src="images/1.jpg" alt=""/></li>
+            <li class="pic1"><img src="images/2.jpg" alt=""/></li>
+            <li class="pic2"><img src="images/3.jpg" alt=""/></li>
+            <li class="pic3"><img src="images/4.jpg" alt=""/></li>
+            <li class="pic4"><img src="images/5.jpg" alt=""/></li>
+            <li class="pic5"><img src="images/6.jpg" alt=""/></li>
+            <li class="pic6"><img src="images/7.jpg" alt=""/></li>
+            <li class="pic7"><img src="images/8.jpg" alt=""/></li>
+        </ul>
+    </div>
+</body>
+</html>
